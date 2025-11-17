@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Arabian Oud</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8B4513;
+            --secondary: #D4AF37;
+            --dark: #2C1A0A;
+            --light: #F8F4E9;
+            --accent: #A0522D;
+            --women: #E75480;
+            --men: #4169E1;
+            --unisex: #9370DB;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--light);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(44, 26, 10, 0.8), rgba(44, 26, 10, 0.8)), url('https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 10px;
+        }
+        
+        .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb li:not(:last-child):after {
+            content: ">";
+            margin-left: 10px;
+            color: var(--light);
+        }
+        
+        /* Products Section */
+        .products-main {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        /* Filters */
+        .filters {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        
+        .filter-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: bold;
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: var(--light);
+            border: 2px solid transparent;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 2;
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .product-gender {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .gender-women {
+            background-color: var(--women);
+            color: white;
+        }
+        
+        .gender-men {
+            background-color: var(--men);
+            color: white;
+        }
+        
+        .gender-unisex {
+            background-color: var(--unisex);
+            color: white;
+        }
+        
+        .product-size {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .page-btn.active, .page-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .filter-options {
+                flex-direction: column;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-gem"></i>
+                <span class="lang-en">Arabian Oud</span>
+                <span class="lang-ar" style="display:none;">عود عربي</span>
+                <span class="lang-ru" style="display:none;">Арабский уд</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="lang-en"><i class="fas fa-home"></i> Home</a><a href="index.html" class="lang-ar" style="display:none;"><i class="fas fa-home"></i> الرئيسية</a><a href="index.html" class="lang-ru" style="display:none;"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="products.html" class="lang-en"><i class="fas fa-shopping-bag"></i> Products</a><a href="products.html" class="lang-ar" style="display:none;"><i class="fas fa-shopping-bag"></i> المنتجات</a><a href="products.html" class="lang-ru" style="display:none;"><i class="fas fa-shopping-bag"></i> Продукты</a></li>
+                    <li><a href="about.html" class="lang-en"><i class="fas fa-info-circle"></i> About</a><a href="about.html" class="lang-ar" style="display:none;"><i class="fas fa-info-circle"></i> من نحن</a><a href="about.html" class="lang-ru" style="display:none;"><i class="fas fa-info-circle"></i> О нас</a></li>
+                    <li><a href="contact.html" class="lang-en"><i class="fas fa-envelope"></i> Contact</a><a href="contact.html" class="lang-ar" style="display:none;"><i class="fas fa-envelope"></i> اتصل بنا</a><a href="contact.html" class="lang-ru" style="display:none;"><i class="fas fa-envelope"></i> Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="lang-en">Our Perfume Collection</h1>
+            <h1 class="lang-ar" style="display:none;">مجموعة عطورنا</h1>
+            <h1 class="lang-ru" style="display:none;">Наша коллекция духов</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html" class="lang-en">Home</a><a href="index.html" class="lang-ar" style="display:none;">الرئيسية</a><a href="index.html" class="lang-ru" style="display:none;">Главная</a></li>
+                <li class="lang-en">Products</li>
+                <li class="lang-ar" style="display:none;">المنتجات</li>
+                <li class="lang-ru" style="display:none;">Продукты</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-main">
+        <div class="container">
+            <h2 class="section-title lang-en">Premium Arabic Perfumes</h2>
+            <h2 class="section-title lang-ar" style="display:none;">عطور عربية فاخرة</h2>
+            <h2 class="section-title lang-ru" style="display:none;">Премиальные арабские духи</h2>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <h3 class="filter-title lang-en">Category</h3>
+                    <h3 class="filter-title lang-ar" style="display:none;">الفئة</h3>
+                    <h3 class="filter-title lang-ru" style="display:none;">Категория</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active lang-en" data-filter="all">All Products</button>
+                        <button class="filter-btn active lang-ar" style="display:none;" data-filter="all">جميع المنتجات</button>
+                        <button class="filter-btn active lang-ru" style="display:none;" data-filter="all">Все продукты</button>
+                        
+                        <button class="filter-btn lang-en" data-filter="men">Men's</button>
+                        <button class="filter-btn lang-ar" style="display:none;" data-filter="men">رجالي</button>
+                        <button class="filter-btn lang-ru" style="display:none;" data-filter="men">Мужские</button>
+                        
+                        <button class="filter-btn lang-en" data-filter="women">Women's</button>
+                        <button class="filter-btn lang-ar" style="display:none;" data-filter="women">نسائي</button>
+                        <button class="filter-btn lang-ru" style="display:none;" data-filter="women">Женские</button>
+                        
+                        <button class="filter-btn lang-en" data-filter="unisex">Unisex</button>
+                        <button class="filter-btn lang-ar" style="display:none;" data-filter="unisex">للجنسين</button>
+                        <button class="filter-btn lang-ru" style="display:none;" data-filter="unisex">Унисекс</button>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3 class="filter-title lang-en">Size</h3>
+                    <h3 class="filter-title lang-ar" style="display:none;">الحجم</h3>
+                    <h3 class="filter-title lang-ru" style="display:none;">Размер</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active lang-en" data-size="all">All Sizes</button>
+                        <button class="filter-btn active lang-ar" style="display:none;" data-size="all">جميع الأحجام</button>
+                        <button class="filter-btn active lang-ru" style="display:none;" data-size="all">Все размеры</button>
+                        
+                        <button class="filter-btn lang-en" data-size="50ml">50ml</button>
+                        <button class="filter-btn lang-ar" style="display:none;" data-size="50ml">50 مل</button>
+                        <button class="filter-btn lang-ru" style="display:none;" data-size="50ml">50 мл</button>
+                        
+                        <button class="filter-btn lang-en" data-size="100ml">100ml</button>
+                        <button class="filter-btn lang-ar" style="display:none;" data-size="100ml">100 مل</button>
+                        <button class="filter-btn lang-ru" style="display:none;" data-size="100ml">100 мл</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-gender="men" data-size="100ml">
+                    <div class="product-badge lang-en">BEST SELLER</div>
+                    <div class="product-badge lang-ar" style="display:none;">الأكثر مبيعاً</div>
+                    <div class="product-badge lang-ru" style="display:none;">БЕСТСЕЛЛЕР</div>
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Royal Oud" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Royal Oud</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">عود ملكي</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Королевский уд</h3>
+                        <p class="product-description lang-en">A rich blend of precious oud, sandalwood, and amber with subtle spice notes.</p>
+                        <p class="product-description lang-ar" style="display:none;">مزيج غني من العود الثمين وخشب الصندل والعنبر مع نفحات توابل خفيفة.</p>
+                        <p class="product-description lang-ru" style="display:none;">Богатая смесь драгоценного уда, сандалового дерева и амбры с тонкими пряными нотами.</p>
+                        <div class="product-details">
+                            <span class="product-gender gender-men lang-en">Men</span>
+                            <span class="product-gender gender-men lang-ar" style="display:none;">رجالي</span>
+                            <span class="product-gender gender-men lang-ru" style="display:none;">Мужской</span>
+                            <span class="product-size">100ml</span>
+                        </div>
+                        <p class="product-price">$89.00</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary lang-en">Add to Cart</a>
+                            <a href="#" class="btn btn-primary lang-ar" style="display:none;">أضف إلى السلة</a>
+                            <a href="#" class="btn btn-primary lang-ru" style="display:none;">Добавить в корзину</a>
+                            <a href="#" class="btn btn-secondary lang-en">View Details</a>
+                            <a href="#" class="btn btn-secondary lang-ar" style="display:none;">عرض التفاصيل</a>
+                            <a href="#" class="btn btn-secondary lang-ru" style="display:none;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-gender="unisex" data-size="50ml">
+                    <img src="https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Amber Musk" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Amber Musk</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">مسك العنبر</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Амбра и мускус</h3>
+                        <p class="product-description lang-en">Warm amber combined with sensual musk creates a captivating unisex fragrance.</p>
+                        <p class="product-description lang-ar" style="display:none;">العنبر الدافئ الممزوج بالمسك الجذاب يخلق عطرًا جذابًا للجنسين.</p>
+                        <p class="product-description lang-ru" style="display:none;">Теплая амбра в сочетании с чувственным мускусом создает захватывающий унисекс аромат.</p>
+                        <div class="product-details">
+                            <span class="product-gender gender-unisex lang-en">Unisex</span>
+                            <span class="product-gender gender-unisex lang-ar" style="display:none;">للجنسين</span>
+                            <span class="product-gender gender-unisex lang-ru" style="display:none;">Унисекс</span>
+                            <span class="product-size">50ml</span>
+                        </div>
+                        <p class="product-price">$75.00</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary lang-en">Add to Cart</a>
+                            <a href="#" class="btn btn-primary lang-ar" style="display:none;">أضف إلى السلة</a>
+                            <a href="#" class="btn btn-primary lang-ru" style="display:none;">Добавить в корзину</a>
+                            <a href="#" class="btn btn-secondary lang-en">View Details</a>
+                            <a href="#" class="btn btn-secondary lang-ar" style="display:none;">عرض التفاصيل</a>
+                            <a href="#" class="btn btn-secondary lang-ru" style="display:none;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" data-gender="women" data-size="100ml">
+                    <div class="product-badge lang-en">NEW</div>
+                    <div class="product-badge lang-ar" style="display:none;">جديد</div>
+                    <div class="product-badge lang-ru" style="display:none;">НОВИНКА</div>
+                    <img src="https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Desert Rose" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Desert Rose</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">وردة الصحراء</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Пустынная роза</h3>
+                        <p class="product-description lang-en">Elegant rose petals blended with oud and delicate jasmine for a feminine touch.</p>
+                        <p class="product-description lang-ar" style="display:none;">بتلات الورد الأنيقة الممزوجة بالعود والياسمين الرقيق لمسة أنثوية.</p>
+                        <p class="product-description lang-ru" style="display:none;">Элегантные лепестки розы в сочетании с удом и нежным жасмином для женственного образа.</p>
+                        <div class="product-details">
+                            <span class="product-gender gender-women lang-en">Women</span>
+                            <span class="product-gender gender-women lang-ar" style="display:none;">نسائي</span>
+                            <span class="product-gender gender-women lang-ru" style="display:none;">Женский</span>
+                            <span class="product-size">100ml</span>
+                        </div>
+                        <p class="product-price">$95.00</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary lang-en">Add to Cart</a>
+                            <a href="#" class="btn btn-primary lang-ar" style="display:none;">أضف إلى السلة</a>
+                            <a href="#" class="btn btn-primary lang-ru" style="display:none;">Добавить в корзину</a>
+                            <a href="#" class="btn btn-secondary lang-en">View Details</a>
+                            <a href="#" class="btn btn-secondary lang-ar" style="display:none;">عرض التفاصيل</a>
+                            <a href="#" class="btn btn-secondary lang-ru" style="display:none;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" data-gender="unisex" data-size="50ml">
+                    <img src="https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Saffron Delight" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Saffron Delight</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">بهجة الزعفران</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Шафрановое наслаждение</h3>
+                        <p class="product-description lang-en">Luxurious saffron notes combined with oud and precious woods create an exotic scent.</p>
+                        <p class="product-description lang-ar" style="display:none;">نفحات الزعفران الفاخرة الممزوجة بالعود والأخشاب الثمينة تخلق رائحة غريبة.</p>
+                        <p class="product-description lang-ru" style="display:none;">Роскошные ноты шафрана в сочетании с удом и драгоценными древесинами создают экзотический аромат.</p>
+                        <div class="product-details">
+                            <span class="product-gender gender-unisex lang-en">Unisex</span>
+                            <span class="product-gender gender-unisex lang-ar" style="display:none;">للجنسين</span>
+                            <span class="product-gender gender-unisex lang-ru" style="display:none;">Унисекс</span>
+                            <span class="product-size">50ml</span>
+                        </div>
+                        <p class="product-price">$110.00</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary lang-en">Add to Cart</a>
+                            <a href="#" class="btn btn-primary lang-ar" style="display:none;">أضف إلى السلة</a>
+                            <a href="#" class="btn btn-primary lang-ru" style="display:none;">Добавить в корзину</a>
+                            <a href="#" class="btn btn-secondary lang-en">View Details</a>
+                            <a href="#" class="btn btn-secondary lang-ar" style="display:none;">عرض التفاصيل</a>
+                            <a href="#" class="btn btn-secondary lang-ru" style="display:none;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card" data-gender="men" data-size="100ml">
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Golden Sandalwood" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Golden Sandalwood</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">خشب الصندل الذهبي</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Золотой сандал</h3>
+                        <p class="product-description lang-en">Premium sandalwood infused with amber and subtle spice for a sophisticated masculine scent.</p>
+                        <p class="product-description lang-ar" style="display:none;">خشب الصندل الممتاز المعطر بالعنبر والتوابل الخفيفة لرائحة ذكورية راقية.</p>
+                        <p class="product-description lang-ru" style="display:none;">Премиальное сандаловое дерево, пропитанное амброй и тонкими специями для изысканного мужского аромата.</p>
+                        <div class="product-details">
+                            <span class="product-gender gender-men lang-en">Men</span>
+                            <span class="product-gender gender-men lang-ar" style="display:none;">رجالي</span>
+                            <span class="product-gender gender-men lang-ru" style="display:none;">Мужской</span>
+                            <span class="product-size">100ml</span>
+                        </div>
+                        <p class="product-price">$85.00</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary lang-en">Add to Cart</a>
+                            <a href="#" class="btn btn-primary lang-ar" style="display:none;">أضف إلى السلة</a>
+                            <a href="#" class="btn btn-primary lang-ru" style="display:none;">Добавить в корзину</a>
+                            <a href="#" class="btn btn-secondary lang-en">View Details</a>
+                            <a href="#" class="btn btn-secondary lang-ar" style="display:none;">عرض التفاصيل</a>
+                            <a href="#" class="btn btn-secondary lang-ru" style="display:none;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" data-gender="women" data-size="50ml">
+                    <div class="product-badge lang-en">POPULAR</div>
+                    <div class="product-badge lang-ar" style="display:none;">شائع</div>
+                    <div class="product-badge lang-ru" style="display:none;">ПОПУЛЯРНЫЙ</div>
+                    <img src="https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Mystic Jasmine" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Mystic Jasmine</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">ياسمين سحري</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Мистический жасмин</h3>
+                        <p class="product-description lang-en">Pure jasmine essence with white flowers and a hint of vanilla for a romantic fragrance.</p>
+                        <p class="product-description lang-ar" style="display:none;">جوهر الياسمين النقي مع الزهور البيضاء ولمسة من الفانيليا لعطر رومانسي.</p>
+                        <p class="product-description lang-ru" style="display:none;">Чистая эссенция жасмина с белыми цветами и ноткой ванили для романтического аромата.</p>
+                        <div class="product-details">
+                            <span class="product-gender gender-women lang-en">Women</span>
+                            <span class="product-gender gender-women lang-ar" style="display:none;">نسائي</span>
+                            <span class="product-gender gender-women lang-ru" style="display:none;">Женский</span>
+                            <span class="product-size">50ml</span>
+                        </div>
+                        <p class="product-price">$68.00</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary lang-en">Add to Cart</a>
+                            <a href="#" class="btn btn-primary lang-ar" style="display:none;">أضف إلى السلة</a>
+                            <a href="#" class="btn btn-primary lang-ru" style="display:none;">Добавить в корзину</a>
+                            <a href="#" class="btn btn-secondary lang-en">View Details</a>
+                            <a href="#" class="btn btn-secondary lang-ar" style="display:none;">عرض التفاصيل</a>
+                            <a href="#" class="btn btn-secondary lang-ru" style="display:none;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn active">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="lang-en">Arabian Oud</h3>
+                    <h3 class="lang-ar" style="display:none;">عود عربي</h3>
+                    <h3 class="lang-ru" style="display:none;">Арабский уд</h3>
+                    <p class="lang-en">Premium Arabic perfumes crafted with passion and tradition.</p>
+                    <p class="lang-ar" style="display:none;">عطور عربية فاخرة مصنوعة بشغف وتقليد.</p>
+                    <p class="lang-ru" style="display:none;">Премиальные арабские духи, созданные со страстью и традициями.</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://wa.me/1234567890" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" class="social-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="lang-en">Quick Links</h3>
+                    <h3 class="lang-ar" style="display:none;">روابط سريعة</h3>
+                    <h3 class="lang-ru" style="display:none;">Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="index.html" class="lang-en">Home</a><a href="index.html" class="lang-ar" style="display:none;">الرئيسية</a><a href="index.html" class="lang-ru" style="display:none;">Главная</a></li>
+                        <li><a href="products.html" class="lang-en">Products</a><a href="products.html" class="lang-ar" style="display:none;">المنتجات</a><a href="products.html" class="lang-ru" style="display:none;">Продукты</a></li>
+                        <li><a href="about.html" class="lang-en">About Us</a><a href="about.html" class="lang-ar" style="display:none;">من نحن</a><a href="about.html" class="lang-ru" style="display:none;">О нас</a></li>
+                        <li><a href="contact.html" class="lang-en">Contact</a><a href="contact.html" class="lang-ar" style="display:none;">اتصل بنا</a><a href="contact.html" class="lang-ru" style="display:none;">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="lang-en">Contact Info</h3>
+                    <h3 class="lang-ar" style="display:none;">معلومات الاتصال</h3>
+                    <h3 class="lang-ru" style="display:none;">Контактная информация</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> <span class="lang-en">Dubai, UAE</span><span class="lang-ar" style="display:none;">دبي، الإمارات</span><span class="lang-ru" style="display:none;">Дубай, ОАЭ</span></li>
+                        <li><i class="fas fa-phone"></i> +971 50 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@arabianoud.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Arabian Oud. <span class="lang-en">All rights reserved.</span><span class="lang-ar" style="display:none;">جميع الحقوق محفوظة.</span><span class="lang-ru" style="display:none;">Все права защищены.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide language content
+                    document.querySelectorAll('.lang-en, .lang-ar, .lang-ru').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                        el.style.display = 'inline';
+                    });
+                    
+                    // Special handling for block elements
+                    document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                        if (el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'DIV') {
+                            el.style.display = 'block';
+                        }
+                    });
+                    
+                    // Update text direction for Arabic
+                    if (lang === 'ar') {
+                        document.documentElement.dir = 'rtl';
+                        document.body.style.textAlign = 'right';
+                    } else {
+                        document.documentElement.dir = 'ltr';
+                        document.body.style.textAlign = 'left';
+                    }
+                });
+            });
+
+            // Filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    const size = this.getAttribute('data-size');
+                    
+                    // Remove active class from all buttons in the same group
+                    const parentGroup = this.parentElement;
+                    parentGroup.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter products
+                    productCards.forEach(card => {
+                        const gender = card.getAttribute('data-gender');
+                        const cardSize = card.getAttribute('data-size');
+                        
+                        let show = true;
+                        
+                        // Check gender filter
+                        if (filter && filter !== 'all' && gender !== filter) {
+                            show = false;
+                        }
+                        
+                        // Check size filter
+                        if (size && size !== 'all' && cardSize !== size) {
+                            show = false;
+                        }
+                        
+                        if (show) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

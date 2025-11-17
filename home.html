@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabian Oud - Premium Arabic Perfumes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8B4513;
+            --secondary: #D4AF37;
+            --dark: #2C1A0A;
+            --light: #F8F4E9;
+            --accent: #A0522D;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--light);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 26, 10, 0.8), rgba(44, 26, 10, 0.8)), url('https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--light);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+        
+        .feature-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .product-gender {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .gender-women {
+            background-color: var(--women);
+            color: white;
+        }
+        
+        .gender-men {
+            background-color: var(--men);
+            color: white;
+        }
+        
+        .gender-unisex {
+            background-color: var(--unisex);
+            color: white;
+        }
+        
+        .product-size {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-gem"></i>
+                <span class="lang-en">Arabian Oud</span>
+                <span class="lang-ar" style="display:none;">عود عربي</span>
+                <span class="lang-ru" style="display:none;">Арабский уд</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="lang-en"><i class="fas fa-home"></i> Home</a><a href="#" class="lang-ar" style="display:none;"><i class="fas fa-home"></i> الرئيسية</a><a href="#" class="lang-ru" style="display:none;"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="#features" class="lang-en"><i class="fas fa-star"></i> Why Us</a><a href="#features" class="lang-ar" style="display:none;"><i class="fas fa-star"></i> لماذا نحن</a><a href="#features" class="lang-ru" style="display:none;"><i class="fas fa-star"></i> Почему мы</a></li>
+                    <li><a href="#products" class="lang-en"><i class="fas fa-shopping-bag"></i> Products</a><a href="#products" class="lang-ar" style="display:none;"><i class="fas fa-shopping-bag"></i> المنتجات</a><a href="#products" class="lang-ru" style="display:none;"><i class="fas fa-shopping-bag"></i> Продукты</a></li>
+                    <li><a href="#contact" class="lang-en"><i class="fas fa-envelope"></i> Contact</a><a href="#contact" class="lang-ar" style="display:none;"><i class="fas fa-envelope"></i> اتصل بنا</a><a href="#contact" class="lang-ru" style="display:none;"><i class="fas fa-envelope"></i> Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="lang-en">Premium Arabic Perfumes</h1>
+            <h1 class="lang-ar" style="display:none;">عطور عربية فاخرة</h1>
+            <h1 class="lang-ru" style="display:none;">Премиальные арабские духи</h1>
+            
+            <p class="lang-en">Discover the essence of luxury with our exclusive collection of authentic Arabic perfumes, crafted with the finest ingredients.</p>
+            <p class="lang-ar" style="display:none;">اكتشف جوهر الفخامة مع مجموعتنا الحصرية من العطور العربية الأصيلة، المصنوعة من أفضل المكونات.</p>
+            <p class="lang-ru" style="display:none;">Откройте для себя сущность роскоши с нашей эксклюзивной коллекцией аутентичных арабских духов, созданных из лучших ингредиентов.</p>
+            
+            <a href="#products" class="cta-button lang-en">Shop Now</a>
+            <a href="#products" class="cta-button lang-ar" style="display:none;">تسوق الآن</a>
+            <a href="#products" class="cta-button lang-ru" style="display:none;">Купить сейчас</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title lang-en">Why Choose Arabian Oud</h2>
+            <h2 class="section-title lang-ar" style="display:none;">لماذا تختار العود العربي</h2>
+            <h2 class="section-title lang-ru" style="display:none;">Почему выбирают Арабский уд</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Natural Ingredients</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">مكونات طبيعية</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Натуральные ингредиенты</h3>
+                    <p class="feature-description lang-en">Our perfumes are crafted using only the finest natural ingredients sourced from sustainable farms.</p>
+                    <p class="feature-description lang-ar" style="display:none;">يتم صنع عطورنا باستخدام أفضل المكونات الطبيعية التي يتم الحصول عليها من المزارع المستدامة.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Наши духи создаются с использованием только лучших натуральных ингредиентов.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Traditional Craftsmanship</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">الحرفية التقليدية</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Традиционное мастерство</h3>
+                    <p class="feature-description lang-en">We preserve ancient perfume-making techniques passed down through generations.</p>
+                    <p class="feature-description lang-ar" style="display:none;">نحن نحافظ على تقنيات صناعة العطور القديمة التي تم تناقلها عبر الأجيال.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Мы сохраняем древние техники изготовления духов, передаваемые из поколения в поколение.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Premium Quality</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">جودة متميزة</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Премиальное качество</h3>
+                    <p class="feature-description lang-en">Each fragrance undergoes rigorous quality testing to ensure longevity and purity.</p>
+                    <p class="feature-description lang-ar" style="display:none;">يخضع كل عطر لاختبارات جودة صارمة لضمان الديمومة والنقاء.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Каждый аромат проходит тщательное тестирование качества.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title lang-en">Featured Products</h2>
+            <h2 class="section-title lang-ar" style="display:none;">منتجات مميزة</h2>
+            <h2 class="section-title lang-ru" style="display:none;">Рекомендуемые продукты</h2>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Royal Oud" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Royal Oud</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">عود ملكي</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Королевский уд</h3>
+                        <div class="product-details">
+                            <span class="product-gender gender-men lang-en">Men</span>
+                            <span class="product-gender gender-men lang-ar" style="display:none;">رجالي</span>
+                            <span class="product-gender gender-men lang-ru" style="display:none;">Мужской</span>
+                            <span class="product-size">100ml</span>
+                        </div>
+                        <p class="product-price">$89.00</p>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Amber Musk" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Amber Musk</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">مسك العنبر</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Амбра и мускус</h3>
+                        <div class="product-details">
+                            <span class="product-gender gender-unisex lang-en">Unisex</span>
+                            <span class="product-gender gender-unisex lang-ar" style="display:none;">للجنسين</span>
+                            <span class="product-gender gender-unisex lang-ru" style="display:none;">Унисекс</span>
+                            <span class="product-size">50ml</span>
+                        </div>
+                        <p class="product-price">$75.00</p>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Desert Rose" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Desert Rose</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">وردة الصحراء</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Пустынная роза</h3>
+                        <div class="product-details">
+                            <span class="product-gender gender-women lang-en">Women</span>
+                            <span class="product-gender gender-women lang-ar" style="display:none;">نسائي</span>
+                            <span class="product-gender gender-women lang-ru" style="display:none;">Женский</span>
+                            <span class="product-size">100ml</span>
+                        </div>
+                        <p class="product-price">$95.00</p>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Saffron Delight" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">Saffron Delight</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">بهجة الزعفران</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">Шафрановое наслаждение</h3>
+                        <div class="product-details">
+                            <span class="product-gender gender-unisex lang-en">Unisex</span>
+                            <span class="product-gender gender-unisex lang-ar" style="display:none;">للجنسين</span>
+                            <span class="product-gender gender-unisex lang-ru" style="display:none;">Унисекс</span>
+                            <span class="product-size">50ml</span>
+                        </div>
+                        <p class="product-price">$110.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="lang-en">Arabian Oud</h3>
+                    <h3 class="lang-ar" style="display:none;">عود عربي</h3>
+                    <h3 class="lang-ru" style="display:none;">Арабский уд</h3>
+                    <p class="lang-en">Premium Arabic perfumes crafted with passion and tradition.</p>
+                    <p class="lang-ar" style="display:none;">عطور عربية فاخرة مصنوعة بشغف وتقليد.</p>
+                    <p class="lang-ru" style="display:none;">Премиальные арабские духи, созданные со страстью и традициями.</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://wa.me/1234567890" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" class="social-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="lang-en">Contact Info</h3>
+                    <h3 class="lang-ar" style="display:none;">معلومات الاتصال</h3>
+                    <h3 class="lang-ru" style="display:none;">Контактная информация</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> <span class="lang-en">Dubai, UAE</span><span class="lang-ar" style="display:none;">دبي، الإمارات</span><span class="lang-ru" style="display:none;">Дубай, ОАЭ</span></li>
+                        <li><i class="fas fa-phone"></i> +971 50 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@arabianoud.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Arabian Oud. <span class="lang-en">All rights reserved.</span><span class="lang-ar" style="display:none;">جميع الحقوق محفوظة.</span><span class="lang-ru" style="display:none;">Все права защищены.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide language content
+                    document.querySelectorAll('.lang-en, .lang-ar, .lang-ru').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                        el.style.display = 'inline';
+                    });
+                    
+                    // Special handling for block elements
+                    document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                        if (el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'DIV') {
+                            el.style.display = 'block';
+                        }
+                    });
+                    
+                    // Update text direction for Arabic
+                    if (lang === 'ar') {
+                        document.documentElement.dir = 'rtl';
+                        document.body.style.textAlign = 'right';
+                    } else {
+                        document.documentElement.dir = 'ltr';
+                        document.body.style.textAlign = 'left';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

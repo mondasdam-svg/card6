@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabian Oud - Premium Arabic Perfumes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8B4513;
+            --secondary: #D4AF37;
+            --dark: #2C1A0A;
+            --light: #F8F4E9;
+            --accent: #A0522D;
+            --women: #E75480;
+            --men: #4169E1;
+            --unisex: #9370DB;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--light);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 26, 10, 0.8), rgba(44, 26, 10, 0.8)), url('https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--light);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+        
+        .feature-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .product-gender {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .gender-women {
+            background-color: var(--women);
+            color: white;
+        }
+        
+        .gender-men {
+            background-color: var(--men);
+            color: white;
+        }
+        
+        .gender-unisex {
+            background-color: var(--unisex);
+            color: white;
+        }
+        
+        .product-size {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+        
+        .contact-icon:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-gem"></i>
+                <span class="lang-en">Arabian Oud</span>
+                <span class="lang-ar" style="display:none;">عود عربي</span>
+                <span class="lang-ru" style="display:none;">Арабский уд</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="lang-en">Home</a><a href="#" class="lang-ar" style="display:none;">الرئيسية</a><a href="#" class="lang-ru" style="display:none;">Главная</a></li>
+                    <li><a href="#features" class="lang-en">Why Us</a><a href="#features" class="lang-ar" style="display:none;">لماذا نحن</a><a href="#features" class="lang-ru" style="display:none;">Почему мы</a></li>
+                    <li><a href="#products" class="lang-en">Products</a><a href="#products" class="lang-ar" style="display:none;">المنتجات</a><a href="#products" class="lang-ru" style="display:none;">Продукты</a></li>
+                    <li><a href="#about" class="lang-en">About</a><a href="#about" class="lang-ar" style="display:none;">من نحن</a><a href="#about" class="lang-ru" style="display:none;">О нас</a></li>
+                    <li><a href="#contact" class="lang-en">Contact</a><a href="#contact" class="lang-ar" style="display:none;">اتصل بنا</a><a href="#contact" class="lang-ru" style="display:none;">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="lang-en">Premium Arabic Perfumes</h1>
+            <h1 class="lang-ar" style="display:none;">عطور عربية فاخرة</h1>
+            <h1 class="lang-ru" style="display:none;">Премиальные арабские духи</h1>
+            
+            <p class="lang-en">Discover the essence of luxury with our exclusive collection of authentic Arabic perfumes, crafted with the finest ingredients.</p>
+            <p class="lang-ar" style="display:none;">اكتشف جوهر الفخامة مع مجموعتنا الحصرية من العطور العربية الأصيلة، المصنوعة من أفضل المكونات.</p>
+            <p class="lang-ru" style="display:none;">Откройте для себя сущность роскоши с нашей эксклюзивной коллекцией аутентичных арабских духов, созданных из лучших ингредиентов.</p>
+            
+            <a href="#products" class="cta-button lang-en">Shop Now</a>
+            <a href="#products" class="cta-button lang-ar" style="display:none;">تسوق الآن</a>
+            <a href="#products" class="cta-button lang-ru" style="display:none;">Купить сейчас</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title lang-en">Why Choose Arabian Oud</h2>
+            <h2 class="section-title lang-ar" style="display:none;">لماذا تختار العود العربي</h2>
+            <h2 class="section-title lang-ru" style="display:none;">Почему выбирают Арабский уд</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Natural Ingredients</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">مكونات طبيعية</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Натуральные ингредиенты</h3>
+                    <p class="feature-description lang-en">Our perfumes are crafted using only the finest natural ingredients sourced from sustainable farms across the Middle East.</p>
+                    <p class="feature-description lang-ar" style="display:none;">يتم صنع عطورنا باستخدام أفضل المكونات الطبيعية التي يتم الحصول عليها من المزارع المستدامة في جميع أنحاء الشرق الأوسط.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Наши духи создаются с использованием только лучших натуральных ингредиентов, полученных с устойчивых ферм по всему Ближнему Востоку.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Traditional Craftsmanship</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">الحرفية التقليدية</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Традиционное мастерство</h3>
+                    <p class="feature-description lang-en">We preserve ancient perfume-making techniques passed down through generations, combined with modern innovation.</p>
+                    <p class="feature-description lang-ar" style="display:none;">نحن نحافظ على تقنيات صناعة العطور القديمة التي تم تناقلها عبر الأجيال، مجتمعة مع الابتكار الحديث.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Мы сохраняем древние техники изготовления духов, передаваемые из поколения в поколение, в сочетании с современными инновациями.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Premium Quality</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">جودة متميزة</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Премиальное качество</h3>
+                    <p class="feature-description lang-en">Each fragrance undergoes rigorous quality testing to ensure longevity, purity, and an unforgettable scent experience.</p>
+                    <p class="feature-description lang-ar" style="display:none;">يخضع كل عطر لاختبارات جودة صارمة لضمان الديمومة والنقاء وتجربة رائحة لا تنسى.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Каждый аромат проходит тщательное тестирование качества, чтобы обеспечить долговечность, чистоту и незабываемые ощущения от запаха.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Global Shipping</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">شحن عالمي</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Глобальная доставка</h3>
+                    <p class="feature-description lang-en">We deliver our exquisite fragrances worldwide with secure packaging to preserve their quality during transit.</p>
+                    <p class="feature-description lang-ar" style="display:none;">نقوم بتوصيل عطورنا الفاخرة في جميع أنحاء العالم مع تغليف آمن للحفاظ على جودتها أثناء العبور.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Мы доставляем наши изысканные ароматы по всему миру с безопасной упаковкой для сохранения их качества во время транспортировки.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Expert Consultation</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">استشارة الخبراء</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Консультация экспертов</h3>
+                    <p class="feature-description lang-en">Our perfume experts provide personalized recommendations to help you find the perfect scent for any occasion.</p>
+                    <p class="feature-description lang-ar" style="display:none;">يقدم خبراء العطور لدينا توصيات مخصصة لمساعدتك في العثور على الرائحة المثالية لأي مناسبة.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Наши эксперты по парфюмерии предоставляют персонализированные рекомендации, чтобы помочь вам найти идеальный аромат для любого случая.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title lang-en">Customer Satisfaction</h3>
+                    <h3 class="feature-title lang-ar" style="display:none;">رضا العملاء</h3>
+                    <h3 class="feature-title lang-ru" style="display:none;">Удовлетворенность клиентов</h3>
+                    <p class="feature-description lang-en">We prioritize customer satisfaction with responsive support and a satisfaction guarantee on all our products.</p>
+                    <p class="feature-description lang-ar" style="display:none;">نحن نعطي الأولوية لرضا العملاء من خلال الدعم المستجيب وضمان الرضا على جميع منتجاتنا.</p>
+                    <p class="feature-description lang-ru" style="display:none;">Мы уделяем приоритетное внимание удовлетворенности клиентов с отзывчивой поддержкой и гарантией удовлетворенности всеми нашими продуктами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title lang-en">Our Collection</h2>
+            <h2 class="section-title lang-ar" style="display:none;">مجموعتنا</h2>
+            <h2 class="section-title lang-ru" style="display:none;">Наша коллекция</h2>
+            
+            <div class="products-grid">
+                <!-- Product items will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="lang-en">About Arabian Oud</h2>
+                    <h2 class="lang-ar" style="display:none;">عن العود العربي</h2>
+                    <h2 class="lang-ru" style="display:none;">О Арабском уде</h2>
+                    
+                    <p class="lang-en">With over 20 years of expertise in the perfume industry, we specialize in creating authentic Arabic fragrances that capture the rich heritage and culture of the Middle East. Our perfumes are crafted using traditional methods combined with modern techniques to ensure the highest quality.</p>
+                    <p class="lang-ar" style="display:none;">مع أكثر من 20 عامًا من الخبرة في صناعة العطور، نحن متخصصون في إنشاء عطور عربية أصيلة تلتقط التراث الغني وثقافة الشرق الأوسط. يتم صنع عطورنا باستخدام الطرق التقليدية المجتمعة مع التقنيات الحديثة لضمان أعلى جودة.</p>
+                    <p class="lang-ru" style="display:none;">Имея более 20 лет опыта в парфюмерной промышленности, мы специализируемся на создании аутентичных арабских ароматов, которые передают богатое наследие и культуру Ближнего Востока. Наши духи создаются с использованием традиционных методов в сочетании с современными технологиями для обеспечения высочайшего качества.</p>
+                    
+                    <div style="margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            <span class="lang-en">100% Natural Ingredients</span>
+                            <span class="lang-ar" style="display:none;">مكونات طبيعية 100%</span>
+                            <span class="lang-ru" style="display:none;">100% натуральные ингредиенты</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            <span class="lang-en">Cruelty Free</span>
+                            <span class="lang-ar" style="display:none;">خالي من القسوة</span>
+                            <span class="lang-ru" style="display:none;">Без жестокости</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            <span class="lang-en">Long-lasting Fragrance</span>
+                            <span class="lang-ar" style="display:none;">رائحة طويلة الأمد</span>
+                            <span class="lang-ru" style="display:none;">Стойкий аромат</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Perfume Making">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title lang-en">Contact Us</h2>
+            <h2 class="section-title lang-ar" style="display:none;">اتصل بنا</h2>
+            <h2 class="section-title lang-ru" style="display:none;">Свяжитесь с нами</h2>
+            
+            <p class="lang-en">Get in touch with us for inquiries, orders, or custom fragrance requests.</p>
+            <p class="lang-ar" style="display:none;">تواصل معنا للاستفسارات أو الطلبات أو طلبات العطور المخصصة.</p>
+            <p class="lang-ru" style="display:none;">Свяжитесь с нами для запросов, заказов или запросов на индивидуальные ароматы.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <a href="https://wa.me/1234567890" class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <span class="lang-en">WhatsApp</span>
+                    <span class="lang-ar" style="display:none;">واتساب</span>
+                    <span class="lang-ru" style="display:none;">WhatsApp</span>
+                </div>
+                <div class="contact-item">
+                    <a href="https://instagram.com" class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <span class="lang-en">Instagram</span>
+                    <span class="lang-ar" style="display:none;">انستغرام</span>
+                    <span class="lang-ru" style="display:none;">Instagram</span>
+                </div>
+                <div class="contact-item">
+                    <a href="https://tiktok.com" class="contact-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <span class="lang-en">TikTok</span>
+                    <span class="lang-ar" style="display:none;">تيك توك</span>
+                    <span class="lang-ru" style="display:none;">TikTok</span>
+                </div>
+                <div class="contact-item">
+                    <a href="mailto:info@arabianoud.com" class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <span class="lang-en">Email</span>
+                    <span class="lang-ar" style="display:none;">البريد الإلكتروني</span>
+                    <span class="lang-ru" style="display:none;">Эл. почта</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="lang-en">Arabian Oud</h3>
+                    <h3 class="lang-ar" style="display:none;">عود عربي</h3>
+                    <h3 class="lang-ru" style="display:none;">Арабский уд</h3>
+                    <p class="lang-en">Premium Arabic perfumes crafted with passion and tradition.</p>
+                    <p class="lang-ar" style="display:none;">عطور عربية فاخرة مصنوعة بشغف وتقليد.</p>
+                    <p class="lang-ru" style="display:none;">Премиальные арабские духи, созданные со страстью и традициями.</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://wa.me/1234567890" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" class="social-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="lang-en">Quick Links</h3>
+                    <h3 class="lang-ar" style="display:none;">روابط سريعة</h3>
+                    <h3 class="lang-ru" style="display:none;">Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#" class="lang-en">Home</a><a href="#" class="lang-ar" style="display:none;">الرئيسية</a><a href="#" class="lang-ru" style="display:none;">Главная</a></li>
+                        <li><a href="#features" class="lang-en">Why Us</a><a href="#features" class="lang-ar" style="display:none;">لماذا نحن</a><a href="#features" class="lang-ru" style="display:none;">Почему мы</a></li>
+                        <li><a href="#products" class="lang-en">Products</a><a href="#products" class="lang-ar" style="display:none;">المنتجات</a><a href="#products" class="lang-ru" style="display:none;">Продукты</a></li>
+                        <li><a href="#about" class="lang-en">About Us</a><a href="#about" class="lang-ar" style="display:none;">من نحن</a><a href="#about" class="lang-ru" style="display:none;">О нас</a></li>
+                        <li><a href="#contact" class="lang-en">Contact</a><a href="#contact" class="lang-ar" style="display:none;">اتصل بنا</a><a href="#contact" class="lang-ru" style="display:none;">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="lang-en">Contact Info</h3>
+                    <h3 class="lang-ar" style="display:none;">معلومات الاتصال</h3>
+                    <h3 class="lang-ru" style="display:none;">Контактная информация</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> <span class="lang-en">Dubai, UAE</span><span class="lang-ar" style="display:none;">دبي، الإمارات</span><span class="lang-ru" style="display:none;">Дубай, ОАЭ</span></li>
+                        <li><i class="fas fa-phone"></i> +971 50 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@arabianoud.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Arabian Oud. <span class="lang-en">All rights reserved.</span><span class="lang-ar" style="display:none;">جميع الحقوق محفوظة.</span><span class="lang-ru" style="display:none;">Все права защищены.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide language content
+                    document.querySelectorAll('.lang-en, .lang-ar, .lang-ru').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                        el.style.display = 'inline';
+                    });
+                    
+                    // Special handling for block elements
+                    document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                        if (el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'DIV') {
+                            el.style.display = 'block';
+                        }
+                    });
+                    
+                    // Update text direction for Arabic
+                    if (lang === 'ar') {
+                        document.documentElement.dir = 'rtl';
+                        document.body.style.textAlign = 'right';
+                    } else {
+                        document.documentElement.dir = 'ltr';
+                        document.body.style.textAlign = 'left';
+                    }
+                });
+            });
+            
+            // Generate product items
+            const productsGrid = document.querySelector('.products-grid');
+            const productNames = {
+                en: [
+                    "Royal Oud", "Amber Musk", "Desert Rose", "Saffron Delight", 
+                    "Mystic Jasmine", "Arabian Nights", "Golden Sandalwood", "Pearl Incense",
+                    "Velvet Musk", "Oud Imperial", "Desert Flower", "Royal Amber",
+                    "Mystic Oud", "Sandalwood Dream", "Rose Petals", "Amber Gold",
+                    "Oud Noir", "Desert Breeze", "Royal Musk", "Arabian Gold",
+                    "Saffron Oud", "Mystic Amber", "Golden Oud", "Desert Oud"
+                ],
+                ar: [
+                    "عود ملكي", "مسك العنبر", "وردة الصحراء", "بهجة الزعفران",
+                    "ياسمين سحري", "ليالي عربية", "خشب الصندل الذهبي", "بخور اللؤلؤ",
+                    "مسك مخملي", "عود إمبراطوري", "زهرة الصحراء", "عنبر ملكي",
+                    "عود سحري", "حلم خشب الصندل", "بتلات الورد", "ذهب العنبر",
+                    "عود نوار", "نسيم الصحراء", "مسك ملكي", "ذهب عربي",
+                    "عود الزعفران", "عنبر سحري", "عود ذهبي", "عود الصحراء"
+                ],
+                ru: [
+                    "Королевский уд", "Амбра и мускус", "Пустынная роза", "Шафрановое наслаждение",
+                    "Мистический жасмин", "Арабские ночи", "Золотой сандал", "Жемчужный ладан",
+                    "Бархатный мускус", "Императорский уд", "Пустынный цветок", "Королевская амбра",
+                    "Мистический уд", "Сандаловая мечта", "Лепестки розы", "Золотая амбра",
+                    "Черный уд", "Пустынный ветер", "Королевский мускус", "Арабское золото",
+                    "Шафрановый уд", "Мистическая амбра", "Золотой уд", "Пустынный уд"
+                ]
+            };
+            
+            const productGenders = [
+                "men", "unisex", "women", "unisex", "women", "unisex", "men", "unisex",
+                "women", "men", "women", "unisex", "men", "unisex", "women", "unisex",
+                "men", "unisex", "men", "unisex", "men", "unisex", "men", "unisex"
+            ];
+            
+            const productSizes = [
+                "50ml", "100ml", "50ml", "100ml", "50ml", "100ml", "50ml", "100ml",
+                "50ml", "100ml", "50ml", "100ml", "50ml", "100ml", "50ml", "100ml",
+                "50ml", "100ml", "50ml", "100ml", "50ml", "100ml", "50ml", "100ml"
+            ];
+            
+            const productPrices = ["$89", "$75", "$95", "$110", "$68", "$120", "$85", "$79", "$72", "$150", "$82", "$98", "$130", "$88", "$65", "$105", "$140", "$70", "$92", "$115", "$125", "$90", "$160", "$135"];
+            
+            // Using placeholder images from Unsplash with perfume-related search
+            const imageUrls = [
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590736969955-1d0c72c4222f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1595425970375-3e59aa8b3545?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            ];
+            
+            for (let i = 0; i < 24; i++) {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                // Gender labels in different languages
+                let genderLabel = '';
+                if (productGenders[i] === 'women') {
+                    genderLabel = `<span class="lang-en">Women</span><span class="lang-ar" style="display:none;">نسائي</span><span class="lang-ru" style="display:none;">Женский</span>`;
+                } else if (productGenders[i] === 'men') {
+                    genderLabel = `<span class="lang-en">Men</span><span class="lang-ar" style="display:none;">رجالي</span><span class="lang-ru" style="display:none;">Мужской</span>`;
+                } else {
+                    genderLabel = `<span class="lang-en">Unisex</span><span class="lang-ar" style="display:none;">للجنسين</span><span class="lang-ru" style="display:none;">Унисекс</span>`;
+                }
+                
+                productCard.innerHTML = `
+                    <img src="${imageUrls[i]}" alt="Perfume ${i+1}" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-name lang-en">${productNames.en[i]}</h3>
+                        <h3 class="product-name lang-ar" style="display:none;">${productNames.ar[i]}</h3>
+                        <h3 class="product-name lang-ru" style="display:none;">${productNames.ru[i]}</h3>
+                        <div class="product-details">
+                            <span class="product-gender gender-${productGenders[i]}">${genderLabel}</span>
+                            <span class="product-size">${productSizes[i]}</span>
+                        </div>
+                        <p class="product-price">${productPrices[i]}</p>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            }
+        });
+    </script>
+</body>
+</html>
